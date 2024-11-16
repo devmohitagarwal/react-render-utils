@@ -7,10 +7,11 @@
   ],
   "main": "dist/cjs/main.js",
   "module": "dist/mjs/main.js",
+  "types": "dist/cjs/main.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/mjs/index.js",
-      "require": "./dist/cjs/index.js"
+      "import": "./dist/mjs/main.js",
+      "require": "./dist/cjs/main.js"
     }
   },
   "repository": "https://github.com/devmohitagarwal/react-render-utils.git",
