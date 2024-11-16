@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+      "allowJs": true,
+      "jsx": "react",
+      "allowSyntheticDefaultImports": true,
+      "baseUrl": "src",
+      "declaration": true,
+      "esModuleInterop": true,
+      "inlineSourceMap": false,
+      "lib": ["es2017", "dom"], // Supports React 16's features <------ updated lib
+      "listEmittedFiles": false,
+      "listFiles": false,
+      "moduleResolution": "node",
+      "noFallthroughCasesInSwitch": true,
+      "pretty": true,
+      "resolveJsonModule": true,
+      "rootDir": "src",
+      "skipLibCheck": true,
+      "strict": true,
+      "traceResolution": false,
+      "types": ["node", "jest", "react", "react-dom"], // Explicit React types
+      "target": "es2017" // Supports React 16's async rendering features <------ updated target
+    },
+  "compileOnSave": false,
+  "exclude": ["node_modules", "dist"],
+  "include": ["src"]
+}

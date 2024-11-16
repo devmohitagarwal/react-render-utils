@@ -1,0 +1,10 @@
+# Ignore everything by default
+*
+
+# Include only the dist folder
+!dist
+
+# Ensure package.json, README.md, and LICENSE are included
+!package.json
+!README.md
+!LICENSE

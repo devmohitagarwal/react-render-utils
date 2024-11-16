@@ -1,0 +1,14 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "node": "12", // Keep Node.js 12 compatibility
+          "browsers": "defaults" // General browser support
+        }
+      }
+    ],
+    "@babel/preset-react" // Supports JSX for React 16+
+  ]
+}
