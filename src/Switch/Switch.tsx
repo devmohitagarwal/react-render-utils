@@ -41,11 +41,7 @@ import React from "react";
  *   }}
  * />
  * 
- * @param props - Component props
- * @param props.value - The value to match against cases
- *                     Can be string, number, boolean, or any valid object key
- * @param props.cases - An object mapping possible values to React elements
- *                     Special 'Default' key serves as fallback when no match is found
+ * @param props - The props for the `Switch` component. See {@link SwitchProps}.
  * 
  * @returns ReactElement that renders either:
  *          - The matching case's content if a match is found
@@ -61,5 +57,5 @@ import React from "react";
  * @since 1.0.0
  */
 export default function Switch<T>({ value, cases }: SwitchProps<T>): ReactElement | null {
-  return <>{cases[value as JSPrimitive] ?? cases.Default ?? null}</>;
+  return <>{cases[value] ?? cases.Default ?? null}</>;
 }

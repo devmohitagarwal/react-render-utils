@@ -1,85 +1,109 @@
+
 # react-render-utils
 
-![npm_version](https://img.shields.io/npm/v/react-render-utils)
-![license](https://img.shields.io/npm/l/react-render-utils)
+![npm_version](https://img.shields.io/npm/v/react-render-utils) ![license](https://img.shields.io/npm/l/react-render-utils)
+
+A lightweight utility library to simplify conditional rendering in React using JSX. It provides intuitive components like `<When>`, `<Switch>`, and `<Range>` for common conditional rendering scenarios.
 
 ---
 
-- **[Installation](#install)**
-- **[Props API](#propsapi)**
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+  - [When](#when)
+  - [Switch](#switch)
+  - [Range](#range)
+- [License](#license)
 
 ---
-
-<a name="install"></a>
 
 ## Installation
 
-npm
+Install the package via npm or yarn:
+
+### npm
 
 ```bash
 npm install react-render-utils
 ```
 
-yarn
+### yarn
 
 ```bash
 yarn add react-render-utils
 ```
 
-## When
+---
 
-JSX for rendering if - then - else
+## Usage
 
-Example 1:
+### When
 
-```html
-<When value="{isLoggedIn}" then="{<Dashboard" />} otherwise={<LoginInPage />} >
+The `<When>` component is ideal for simple conditional rendering like `if-then-else`.
+
+#### Example 1
+
+```jsx
+<When
+  value={isLoggedIn}
+  then={<Dashboard />}
+  otherwise={<LoginPage />}
+/>
 ```
 
-Example 2:
+#### Example 2
 
-```html
-<When value="{isLoggedIn}" then="{<>You are logged in</When>}"></When>
+```jsx
+<When
+  value={isLoggedIn}
+  then={<>You are logged in</>}
+  otherwise={<>Please log in</>}
+/>
 ```
 
-## Switch
+---
 
-JSX Switch condition.
+### Switch
 
-Example 1:
+The `<Switch>` component helps render one of many possible options based on a value.
 
-```html
-      <Switch
-        value={userRole}
-        cases={{
-          admin: <AdminDashboard />,
-          user: <UserDashboard />,
-          Default: <GuestDashboard />, // Fallback 
-        }}
-      />
+#### Example 1
+
+```jsx
+<Switch
+  value={userRole}
+  cases={{
+    admin: <AdminDashboard />,
+    user: <UserDashboard />,
+    Default: <GuestDashboard />, // Fallback
+  }}
+/>
 ```
 
-Example 2:
+#### Example 2
 
-```html
-      <Switch
-        value={currentAction}
-        cases={{
-          profile: <ProfileForm />,
-          password: <PasswordForm />,
-          notifications: <NotificationSettingsForm />,
-          Default: <UserDashboard />
-        }}
-      />
+```jsx
+<Switch
+  value={currentAction}
+  cases={{
+    profile: <ProfileForm />,
+    password: <PasswordForm />,
+    notifications: <NotificationSettingsForm />,
+    Default: <UserDashboard />,
+  }}
+/>
 ```
 
-## Range
+---
 
-JSX Range condition.
+### Range
 
-Example 1:
+The `<Range>` component simplifies range-based conditional rendering.
 
-```html
+#### Example 1
+
+```jsx
 <Range
   value={studentScore}
   ranges={{
@@ -93,9 +117,9 @@ Example 1:
 />
 ```
 
-Example 2:
+#### Example 2
 
-```html
+```jsx
 <Range
   value={loyaltyPoints}
   ranges={{
@@ -108,4 +132,8 @@ Example 2:
 />
 ```
 
+---
 
+## License
+
+MIT

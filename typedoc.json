@@ -1,0 +1,13 @@
+{
+  "entryPoints": ["src/**/"],
+  "out": "docs",
+  "theme": "default",
+  "readme": "README.md",
+  "includeVersion": true,
+  "excludePrivate": true,
+  "excludeInternal": false,
+  "categorizeByGroup": false,
+  "groupOrder": ["Component", "Types","*"],
+  "tsconfig": "tsconfig.json",
+  "exclude": ["src/index.tsx"]
+}

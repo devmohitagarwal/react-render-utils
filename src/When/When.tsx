@@ -21,16 +21,13 @@ import React from "react";
  *   then={<ErrorMessage error={error} />} 
  * />
  * 
- * @param props - Component props
- * @param props.value - The condition to evaluate
- * @param props.then - Content to render when condition is true
- * @param props.otherwise - Optional content to render when condition is false
- *                         If omitted, renders null
+ * @param props - The props for the `When` component. See {@link WhenProps}.
+ 
  * 
  * @returns ReactElement that renders either:
- *          - The 'then' content if value is true
- *          - The 'otherwise' content if value is false and otherwise is provided
- *          - null if value is false and otherwise is not provided
+ *          - The 'then' content if value is true.
+ *          - The 'otherwise' content if value is false and otherwise is provided.
+ *          - null if value is false and otherwise is not provided.
  * 
  * @since 1.0.0
  */

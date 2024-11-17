@@ -1,7 +1,9 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, ReactNode } from "react";
 import { RangeProps } from "./Types";
 
 /**
+ * @category Component
+ * 
  * A declarative range-based conditional rendering component for React.
  * Renders content based on where a numeric value falls within defined ranges.
  * 
@@ -30,11 +32,7 @@ import { RangeProps } from "./Types";
  *   }}
  * />
  * 
- * @param props - Component props
- * @param props.value - The numeric value to test against ranges
- * @param props.ranges - An object mapping range strings to React elements.
- *                      Ranges should be in the format "start-end" (e.g., "0-100").
- *                      Special 'Default' key serves as fallback when no range matches.
+ * @param props - {@link RangeProps}
  * 
  * @returns The content corresponding to the matching range, Default case content,
  *          or null if no match and no Default provided
@@ -45,7 +43,6 @@ import { RangeProps } from "./Types";
  * - First matching range is used if ranges overlap
  * - Invalid range strings are silently skipped
  * - Performance is O(n) where n is the number of ranges
- * 
  * @since 1.0.0
  */
 export default function Range({
