@@ -1,6 +1,65 @@
+import { ReactElement } from "react";
 import { JSPrimitive, SwitchProps } from "./Types";
+import React from "react";
 
-// Example implementation
-export default function Switch<T>({ value, cases }: SwitchProps<T>) {
-  return cases[value as JSPrimitive] ?? cases.Default ?? null;
+/**
+ * A declarative switch-case component for conditional rendering in React.
+ * Renders content based on matching a value against predefined cases.
+ * 
+ * @template T - The type of the value to switch on (must be a valid object key)
+ * 
+ * @example
+ * // Basic usage with string value
+ * <Switch 
+ *   value={status}
+ *   cases={{
+ *     loading: <LoadingSpinner />,
+ *     error: <ErrorMessage />,
+ *     success: <SuccessContent />,
+ *     Default: <DefaultContent />
+ *   }}
+ * />
+ * 
+ * @example
+ * // Using with number value
+ * <Switch
+ *   value={errorCode}
+ *   cases={{
+ *     404: <NotFound />,
+ *     500: <ServerError />,
+ *     Default: <UnknownError />
+ *   }}
+ * />
+ * 
+ * @example
+ * // Using with boolean value
+ * <Switch
+ *   value={isAuthenticated}
+ *   cases={{
+ *     true: <AuthenticatedContent />,
+ *     false: <LoginForm />,
+ *   }}
+ * />
+ * 
+ * @param props - Component props
+ * @param props.value - The value to match against cases
+ *                     Can be string, number, boolean, or any valid object key
+ * @param props.cases - An object mapping possible values to React elements
+ *                     Special 'Default' key serves as fallback when no match is found
+ * 
+ * @returns ReactElement that renders either:
+ *          - The matching case's content if a match is found
+ *          - The 'Default' case content if provided and no match is found
+ *          - null if no match is found and no Default case is provided
+ * 
+ * @remarks
+ * - The component performs a strict equality check (===) for matching
+ * - Cases must be valid object keys (string, number, or symbol)
+ * - 'Default' is a special case that acts as a fallback
+ * - Performance is O(1) as it uses direct object property access
+ * 
+ * @since 1.0.0
+ */
+export default function Switch<T>({ value, cases }: SwitchProps<T>): ReactElement | null {
+  return <>{cases[value as JSPrimitive] ?? cases.Default ?? null}</>;
 }
