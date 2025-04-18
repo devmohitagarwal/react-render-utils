@@ -3,10 +3,10 @@ import { RangeProps } from "./Types";
 
 /**
  * @category Component
- * 
+ *
  * A declarative range-based conditional rendering component for React.
  * Renders content based on where a numeric value falls within defined ranges.
- * 
+ *
  * @example
  * // Grade scoring system
  * <Range
@@ -19,7 +19,7 @@ import { RangeProps } from "./Types";
  *     Default: <div>Invalid score</div>
  *   }}
  * />
- * 
+ *
  * @example
  * // HTTP status codes
  * <Range
@@ -31,12 +31,12 @@ import { RangeProps } from "./Types";
  *     Default: <UnknownStatus />
  *   }}
  * />
- * 
+ *
  * @param props - {@link RangeProps}
- * 
+ *
  * @returns The content corresponding to the matching range, Default case content,
  *          or null if no match and no Default provided
- * 
+ *
  * @remarks
  * - Ranges are inclusive of their start and end values
  * - Ranges are checked in object entry order (might not be deterministic)
@@ -49,10 +49,9 @@ export default function Range({
   value,
   ranges,
 }: RangeProps): ReactElement | null {
-
   // Check each range for a match
   for (const [rangeString, content] of Object.entries(ranges)) {
-    if (rangeString === 'Default') continue;
+    if (rangeString === "Default") continue;
 
     const range = parseRange(rangeString);
     if (!range) continue;
@@ -73,7 +72,7 @@ export default function Range({
  */
 function parseRange(rangeString: string): [number, number] | null {
   try {
-    const [start, end] = rangeString.split('-').map(Number);
+    const [start, end] = rangeString.split("-").map(Number);
     if (isNaN(start) || isNaN(end)) return null;
     if (end < start) return null;
     return [start, end];

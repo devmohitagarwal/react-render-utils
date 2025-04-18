@@ -1,9 +1,8 @@
-export * from "./When/When.js";
-export * from "./Switch/Switch.js";
-export * from "./Range/Range.js";
+export * from "./when/When.js";
+export * from "./switch/Switch.js";
+export * from "./range/Range.js";
 
-
-
-export { default as When } from "./When/When.js";
-export { default as Switch } from "./Switch/Switch.js";
-export { default as Range } from "./Range/Range.js";
+export { default as When } from "./when/When.js";
+export { default as Switch } from "./switch/Switch.js";
+export { default as Range } from "./range/Range.js";
+export { pluralise, pluraliseWithCount } from "./pluralise/pluralise.js";

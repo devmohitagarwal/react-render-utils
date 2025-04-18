@@ -1,40 +1,61 @@
-import { ReactElement } from "react";
-import { WhenProps } from "./Types";
-import React from "react";
+import React, { ReactNode } from "react";
 
 /**
- * A declarative conditional rendering component for JSX/TSX.
- * Provides a more readable alternative to ternary operators in JSX.
- * 
- * @example
- * // Simple usage
- * <When 
- *   value={isLoading} 
- *   then={<LoadingSpinner />} 
- *   otherwise={<Content />} 
- * />
- * 
- * @example
- * // Without otherwise prop
- * <When 
- *   value={hasError} 
- *   then={<ErrorMessage error={error} />} 
- * />
- * 
- * @param props - The props for the `When` component. See {@link WhenProps}.
- 
- * 
- * @returns ReactElement that renders either:
- *          - The 'then' content if value is true.
- *          - The 'otherwise' content if value is false and otherwise is provided.
- *          - null if value is false and otherwise is not provided.
- * 
- * @since 1.0.0
+ * Props for the enhanced When component that accepts both ReactNode and functions
  */
-export default function When({
-  value,
-  then,
-  otherwise = null,
-}: WhenProps): ReactElement {
-  return <>{value ? then : otherwise}</>;
+interface WhenProps<T> {
+  /**
+   * The value to check for truthiness
+   */
+  value: T;
+
+  /**
+   * Content to render when value is truthy.
+   * Can be either a ReactNode or a function that receives the non-nullable value.
+   */
+  then: ReactNode | ((value: NonNullable<T>) => ReactNode);
+
+  /**
+   * Content to render when value is falsy.
+   * Can be either a ReactNode or a function that receives undefined.
+   */
+  otherwise?: ReactNode | ((value: undefined) => ReactNode);
+}
+
+/**
+ * An enhanced When component that conditionally renders content based on the truthiness of a value.
+ * Supports both direct ReactNode and function rendering patterns for type safety.
+ *
+ * @template T - The type of the value being checked
+ * @param {WhenProps<T>} props - Component props
+ * @returns {JSX.Element} Either the then element or the otherwise element
+ */
+export default function When<T>(props: WhenProps<T>): JSX.Element {
+  const { value, then, otherwise } = props;
+
+  // Handle the case when value is truthy
+  if (value) {
+    // Check if 'then' is a function
+    if (typeof then === "function") {
+      // Call the function with the non-nullable value
+      return <>{then(value as NonNullable<T>)}</>;
+    }
+    // Otherwise, return the ReactNode directly
+    return <>{then}</>;
+  }
+
+  // Handle the case when value is falsy
+  // Check if 'otherwise' is a function
+  if (typeof otherwise === "function") {
+    // Call the function with undefined
+    return <>{otherwise(undefined)}</>;
+  }
+  // Otherwise, return the ReactNode directly
+  return <>{otherwise}</>;
+}
+
+// Example usage with TypeScript
+interface User {
+  email: string;
+  name: string;
 }
