@@ -54,8 +54,3 @@ export default function When<T>(props: WhenProps<T>): JSX.Element {
   return <>{otherwise}</>;
 }
 
-// Example usage with TypeScript
-interface User {
-  email: string;
-  name: string;
-}

@@ -55,10 +55,6 @@ export function pluraliseWithCount(
   plural?: string, // Optional: Custom plural form of the word
   hideCount?: boolean // Optional: Whether to hide the count in the output
 ) {
-  if (zeroText) {
-    return `${zeroText}`;
-  }
-
   // Default plural form is singular + 's' if not provided
   if (!plural) {
     plural = `${singular}s`;
@@ -66,6 +62,9 @@ export function pluraliseWithCount(
 
   // Special case for zero count
   if (count === 0) {
+    if (zeroText) {
+      return zeroText;
+    }
     return hideCount ? `${plural}` : `${count} ${plural}`;
   }
 

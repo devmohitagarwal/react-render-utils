@@ -68,11 +68,17 @@ export default function Range({
 
 /**
  * Parses a range string into a tuple of numbers.
+ * Supports negative numbers (e.g., "-10-5" for -10 to 5).
  * Returns null for invalid range strings.
  */
 function parseRange(rangeString: string): [number, number] | null {
   try {
-    const [start, end] = rangeString.split("-").map(Number);
+    // Match an optional negative number, then a dash separator, then another optional negative number
+    const match = rangeString.match(/^(-?\d+)-(-?\d+)$/);
+    if (!match) return null;
+
+    const start = Number(match[1]);
+    const end = Number(match[2]);
     if (isNaN(start) || isNaN(end)) return null;
     if (end < start) return null;
     return [start, end];
