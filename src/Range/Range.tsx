@@ -32,6 +32,17 @@ import { RangeProps } from "./Types";
  *   }}
  * />
  *
+ * @example
+ * // Open-ended ranges
+ * <Range
+ *   value={itemCount}
+ *   ranges={{
+ *     "0-0": <Empty />,
+ *     "1-9": <FewItems />,
+ *     "10+": <ManyItems />,
+ *   }}
+ * />
+ *
  * @param props - {@link RangeProps}
  *
  * @returns The content corresponding to the matching range, Default case content,
@@ -68,11 +79,20 @@ export default function Range({
 
 /**
  * Parses a range string into a tuple of numbers.
- * Supports negative numbers (e.g., "-10-5" for -10 to 5).
+ * Supports negative numbers (e.g., "-10-5" for -10 to 5)
+ * and open-ended ranges (e.g., "100+" for 100 to infinity).
  * Returns null for invalid range strings.
  */
 function parseRange(rangeString: string): [number, number] | null {
   try {
+    // Try open-ended range first (e.g., "100+", "-5+")
+    const openMatch = rangeString.match(/^(-?\d+)\+$/);
+    if (openMatch) {
+      const start = Number(openMatch[1]);
+      if (isNaN(start)) return null;
+      return [start, Infinity];
+    }
+
     // Match an optional negative number, then a dash separator, then another optional negative number
     const match = rangeString.match(/^(-?\d+)-(-?\d+)$/);
     if (!match) return null;

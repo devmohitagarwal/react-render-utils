@@ -5,7 +5,7 @@ import { ReactNode } from "react";
  * @example "0-100"
  * @example "Default"
  */
-export type RangeValue = `${number}-${number}` | "Default";
+export type RangeValue = `${number}-${number}` | `${number}+` | "Default";
 
 /**
  * Represents valid renderable React content, excluding undefined and boolean values
