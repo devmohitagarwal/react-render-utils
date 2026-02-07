@@ -1,5 +1,6 @@
 import React, { ReactElement } from "react";
 import { EachProps } from "./Types";
+export type { EachProps } from "./Types";
 
 /**
  * @category Component
