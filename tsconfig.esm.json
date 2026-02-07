@@ -1,11 +1,9 @@
 {
   "extends": "./tsconfig.json",
-  
   "compilerOptions": {
       "module": "esnext",
       "outDir": "dist/mjs",
-      "target": "es2019",
-
-      
-  }
+      "target": "es2019"
+  },
+  "exclude": ["node_modules", "dist", "src/**/*.test.*"]
 }

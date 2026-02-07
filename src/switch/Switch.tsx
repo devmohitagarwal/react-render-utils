@@ -31,16 +31,6 @@ import React from "react";
  *   }}
  * />
  *
- * @example
- * // Using with boolean value
- * <Switch
- *   value={isAuthenticated}
- *   cases={{
- *     true: <AuthenticatedContent />,
- *     false: <LoginForm />,
- *   }}
- * />
- *
  * @param props - The props for the `Switch` component. See {@link SwitchProps}.
  *
  * @returns ReactElement that renders either:
